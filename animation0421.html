@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS動畫效果練習作業</title>
   <style>
-    body {
-      animation: colorchange 40s; 
-      -webkit-animation: colorchange 40s; /* Chrome and Safari */
+   body {
+      animation: colorchange 20s infinite; 
+     -webkit-animation: colorchange 20s infinite;; /* Chrome and Safari */
     }
 
     @keyframes colorchange
@@ -59,7 +59,7 @@
   border-radius: 10px;
   position: relative;
   transform-origin: 75% 0;
-  animation: moveIt 2.5s ease-in-out infinite;
+  animation: moveIt 3s ease-in-out infinite;
 }
 
 .thread:after {
@@ -86,8 +86,8 @@
 }
 
 .pendulum {
-  width: 20px;
-  height: 20px;
+  width: 30px;
+  height: 30px;
   background: -moz-radial-gradient(circle at 70% 35%, white, #66d63e 30%, #40a31d 50%);
   background: -webkit-radial-gradient(circle at 70% 35%, white, #66d63e 30%, #40a31d 50%);
   background: -o-radial-gradient(circle at 70% 35%, white, #66d63e 30%, #40a31d 50%);
@@ -105,7 +105,7 @@
   background: rgba(0, 0, 0, 0.2);
   border-radius: 50%;
   margin: 50px auto 0;
-  animation: moveShade 2.5s ease-in-out alternate infinite;
+  animation: moveShade 1.5s ease-in-out alternate infinite;
 }
 
 @keyframes moveIt {
@@ -130,19 +130,124 @@
     filter: blur(20px);
   }
 }
+.pendulum2{
+  position:relative; 
+  width: 220px;
+  height: 180px;
+  background-color: #7B68EE;
+  top:50%;
+  left:  50%;
+  border-radius: 15%;
+  align-items: center;
+  border-top: 15px solid #eee7d5;
+  transform: translate(-50%, -50%);
+  }
+.pendulum_box{
+  display: flex;
+  padding: 120px 0 0 10px;
+  position: absolute;
+  flex: 1;
+}
+.ball{
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background-color: #c7ab9a;
+  position: relative;
+  transform-origin: 50% -300%;
+  
+}
+  .ball::before{
+    content: '';
+    width: 2px;
+    height: 120px;
+    background-color: #fffeff;
+    left: 18px;
+    top: -120px;
+    position: absolute;
+  }
 
+.ball.first{
+  animation: firstball .9s alternate ease-in infinite;
+}
+
+@keyframes firstball{
+  0%{
+    transform: rotate(35deg);
+  }
+  50%{
+    transform: rotate(0deg);
+  }
+}
+
+.ball.last{
+  animation: lastball .9s alternate ease-out infinite;
+}
+
+@keyframes lastball{
+  50%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(-35deg);
+  }
+}
+.flex-container {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.flex-item {
+  background: tomato;
+  padding: 5px;
+  width: 600px;
+  height: 300px;
+  margin-top: 10px;
+  
+  line-height: 300px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
   </style>
 </head>
 
 <body>
-  <div class="base">
-    <div class="holder"></div>
-    <div class="thread">
-      <div class="knob"></div>
-      <div class="pendulum"></div>
-    </div>
-    <div class="shadow"></div>
-  </div>
-</body>
+  <ul class="flex-container">
+        <li class="flex-item">
+            <div class="base">
+                <div class="holder"></div>
+                <div class="thread">
+                <div class="knob"></div>
+                <div class="pendulum"></div>
+                </div>
+                <div class="shadow"></div>
+            </div>
+        </li>
+    </ul>
+    <ul class="flex-container">
+        <li class="flex-item">
+            <div class="pendulum2">
+                <div class="pendulum_box">
+                <div class="ball first"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball"></div>
+                    <div class="ball last"></div>
+                </div>
+            </div>
+        </li>
+    </ul>
 
 </html>
